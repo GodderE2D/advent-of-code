@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 
 // If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
-const string = fs.readFileSync("./input.txt");
+const string = readFileSync("./input.txt");
 
 const splitArr = input.split("\n\n");
 
