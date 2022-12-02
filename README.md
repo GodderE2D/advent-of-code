@@ -22,3 +22,17 @@ A way to start off Day 1! Calorie counting. Overall, if you know how logic works
 
 You start off by getting a lonnngggg input string of numbers seperated by newlines. A new elf is a double newline, and you have to parse it, get the sum seperated by double newlines, and sort it. In most programming languages, this is fairly simple. I used TypeScript personally. If you're stuck on the sum part because you don't have access to `sum()` in Python and you're using a big-boy language (JavaScript, jk), then you can use `.reduce()`.
 </details>
+
+
+### Day 2
+
+<details>
+<summary>Day 2 Findings</summary>
+
+[[ `🔗` Part 1 Code ]](https://github.com/GodderE2D/advent-of-code/blob/main/results/2022/day-2/part-1.ts)  
+[[ `🔗` Part 2 Code ]](https://github.com/GodderE2D/advent-of-code/blob/main/results/2022/day-2/part-2.ts)
+
+It's scissors, papers, and rocks, by the way. Either way, you can either do a smart way or the way I did it: a lot of if-else statements (the yanderedev method). Well, at least it works and you're not going to be looking for performance in TypeScript anyways.
+
+You start off by getting some ABC's and XYZ's. Split them by newlines, then split them by spaces. Do a biiigggg loop and add to a total score. I honestly don't know the "smart" way, but if you're not the brightest like me then use if statements for every possible combination. It should be pretty same for Part 2, but instead you assign the round answers manually depending if you win or not.
+</details>
