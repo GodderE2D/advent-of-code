@@ -1,0 +1,23 @@
+{
+  "name": "advent-of-code",
+  "version": "0.1.0",
+  "description": "My Advent of Code accomplishments.",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GodderE2D/advent-of-code.git"
+  },
+  "author": "GodderE2D",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/GodderE2D/advent-of-code/issues"
+  },
+  "homepage": "https://github.com/GodderE2D/advent-of-code#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.10",
+    "prettier": "^2.8.0"
+  }
+}
