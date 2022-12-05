@@ -69,3 +69,17 @@ Yes, I done today's Advent of Code in TypeScript again. Maybe another day, well,
 Part 2 was pretty simple this time, basically don't check if everything overlaps, just check if anything overlaps at all. For me, that just means deleting `=== sectionN.length`. All in around 10-15 minutes of work!
 
 </details>
+
+### Day 5
+
+<details>
+<summary>Day 5 Findings</summary>
+
+[[`🔗` Part 1 Code]](https://github.com/GodderE2D/advent-of-code/blob/main/results/2022/day-5/part-1.ts) (TypeScript)  
+[[`🔗` Part 2 Code]](https://github.com/GodderE2D/advent-of-code/blob/main/results/2022/day-5/part-2.ts) (TypeScript)
+
+Wow, what a day. This took me around 2 hours to complete. I really question my programming skills sometimes. In day 5, you have to ship cargo! Rust reference?! Parse an annoying string, and move cargo from one stack to another stack. Again, I did it in TypeScript.
+
+You have to first parse a long string first with two sections: the actual stacks information and instructions. This took me way longer than it should, and regex makes stuff 10x more simple. For part 1, you have to loop over each instruction and remove the last n elements (JS hint: `.splice()`/`.slice()`) from your old stack. Then, reverse the array and add the moving crates (JS hint: `.push()` and spread operator, or, `[...old, ...new]`, make sure `new` is reversed!) to your new stack. Part 2 so far was the most relatively simplest to their preceding part. You basically don't reverse the moving crates when adding it to the new stack. In JS, that's as simple as removing wherever your `.reverse()` is.
+
+</details>
