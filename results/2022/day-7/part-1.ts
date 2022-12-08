@@ -1,3 +1,6 @@
+// Heavily inspired from JPBM135's result:
+// https://github.com/JPBM135/advent-of-coding-2022/blob/main/day-07/index.ts
+
 import { readFileSync } from "fs";
 
 // If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
