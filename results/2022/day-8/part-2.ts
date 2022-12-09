@@ -6,34 +6,42 @@ import { readFileSync } from "fs";
 // If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
 const input = readFileSync("./input.txt", "utf-8");
 
-// To see whether a tree is visible from the outside, loop through each tree
-const isVisible = (x: number, y: number, forest: number[][]): number => {
-  const current = forest.at(y)!.at(x)!;
+const getTree = (x: number, y: number) => trees.at(y)!.at(x)!;
 
-  const left = forest.at(y)!.slice(0, x); // from start to x
-  const right = forest.at(y)!.slice(x + 1); // from x + 1 to end
-  const up = forest.slice(0, y).map((l) => l.at(x)!); // from top to y, then get every x in that y
-  const down = forest.slice(y + 1).map((l) => l.at(x)!); // from y + 1 to bottom, then get every x in that y
-
-  const tallTrees = [left, up, right, down].map((direction) =>
-    Math.max(...direction)
-  );
-  const shortestOfTallTrees = Math.min(...tallTrees);
-
-  return current > shortestOfTallTrees ? 1 : 0;
+const scoreOfDirection = (treesInDirection: number[], currentTree: number) => {
+  if (Math.max(...treesInDirection) < currentTree)
+    return treesInDirection.length;
+  return treesInDirection.findIndex((tree) => tree >= currentTree) + 1;
 };
 
-// Parse trees into an array of array
-const trees = input.split("\n").map((l) => l.split("").map(Number));
+// To check the scenic score of each tree, loop through each tree
+const treeScenicScore = (x: number, y: number): number => {
+  const tree = getTree(x, y);
 
-// Get the visibility for each tree
-const treeVisibilities = trees.map((line, index) =>
-  line.map((_, i) => isVisible(i, index, trees))
+  const left = trees.at(y)!.slice(0, x).reverse(); // from start to x, then reverse
+  const right = trees.at(y)!.slice(x + 1); // from x + 1 to end
+  const top = trees
+    .slice(0, y)
+    .map((l) => l.at(x)!)
+    .reverse(); // from top to y, then get every x in that y, then reverse
+  const bottom = trees.slice(y + 1).map((l) => l.at(x)!); // from y + 1 to bottom, then get every x in that y
+
+  const [a, b, c, d] = [left, right, top, bottom].map((trees) =>
+    scoreOfDirection(trees, tree)
+  );
+
+  return a * b * c * d;
+};
+
+// Parse trees into an array of arrays
+const trees = input.split("\n").map((line) => line.split("").map(Number));
+
+// Get the scenic score of each tree
+const scenicScoreOfTrees = trees.map((line, index) =>
+  line.map((_, i) => treeScenicScore(i, index))
 );
 
-// Get the total amount of visible trees
-const total = treeVisibilities
-  .map((arr) => arr.reduce((prev, current) => prev + current))
-  .reduce((prev, current) => prev + current);
+// Get the highest scenic score
+const highestScenicScore = Math.max(...scenicScoreOfTrees.flat());
 
-console.log(total);
+console.log(highestScenicScore);
