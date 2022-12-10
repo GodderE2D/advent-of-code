@@ -31,9 +31,9 @@ crates = transpose(crates).map((arr) => arr.reverse().filter(Boolean));
 
 const instructionsArr = instructionsStr.split("\n");
 let instructions: {
-  moveAmount: number,
-  from: number,
-  to: number,
+  moveAmount: number;
+  from: number;
+  to: number;
 }[] = [];
 
 for (const insLine of instructionsArr) {

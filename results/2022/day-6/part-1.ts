@@ -9,15 +9,15 @@ const letters = input.split("");
 let charactersProcessed = 0;
 
 for (const [i, letter] of letters.entries()) {
-    charactersProcessed++;
-    if (i < marker) continue;
-    const lastFourLetters: string[] = [];
+  charactersProcessed++;
+  if (i < marker) continue;
+  const lastFourLetters: string[] = [];
 
-    for (let lastLetterCount = 1; lastLetterCount <= marker; lastLetterCount++) {
-        lastFourLetters.push(letters[i - lastLetterCount]);
-    }
+  for (let lastLetterCount = 1; lastLetterCount <= marker; lastLetterCount++) {
+    lastFourLetters.push(letters[i - lastLetterCount]);
+  }
 
-    if (new Set(lastFourLetters).size === marker) break;
+  if (new Set(lastFourLetters).size === marker) break;
 }
 
 console.log(charactersProcessed - 1);
