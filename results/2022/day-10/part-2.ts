@@ -1,20 +1,17 @@
 // Heavily inspired from neon-inkblast's result:
 // https://github.com/neon-inkblast/advent-of-code-2022-TS/blob/main/src/2022/day/10/part_2.ts
 
-import { readFileSync } from "fs";
+import { getInput } from "../../../src/get-input.ts";
 
-// If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
-const input = readFileSync("./input.txt", "utf-8").split("\n");
+const input = getInput(2022, 10);
 
 let cycleCounter = 1;
 let spritePos = [0, 1, 2];
 const cursorPos = [0, 0];
 
-const display: string[][] = new Array(6)
-  .fill(0)
-  .map(() => new Array(40).fill(0).map(() => "."));
+const display: string[][] = new Array(6).fill(0).map(() => new Array(40).fill(0).map(() => "."));
 
-const flattened = input.flatMap((line) => line.split(" "));
+const flattened = input.split("\n").flatMap((line) => line.split(" "));
 
 for (const line of flattened) {
   cycleCounter++;

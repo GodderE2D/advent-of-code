@@ -1,7 +1,6 @@
-import { readFileSync } from "fs";
+import { getInput } from "../../../src/get-input.ts";
 
-// If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
-const input = readFileSync("./input.txt", "utf-8");
+const input = getInput(2022, 3);
 
 const rucksacks = input.split("\n");
 const groups: string[][] = [];
@@ -21,13 +20,7 @@ let sum = 0;
 for (const group of groups) {
   const [rucksack1, rucksack2, rucksack3] = group;
   const duplicates = [
-    ...new Set(
-      rucksack1
-        .split("")
-        .filter(
-          (letter) => rucksack2.includes(letter) && rucksack3.includes(letter)
-        )
-    ),
+    ...new Set(rucksack1.split("").filter((letter) => rucksack2.includes(letter) && rucksack3.includes(letter))),
   ];
 
   if (duplicates.includes("\r")) duplicates.pop();
