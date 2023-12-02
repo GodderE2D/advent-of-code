@@ -4,7 +4,7 @@ import { readFileSync } from "fs";
 
 export function getInput(year: number, day: number) {
   // If given a custom input, return that instead
-  if (process.env.PUZZLE_INPUT) return process.env.PUZZLE_INPUT;
+  if (process.env.PUZZLE_INPUT) return process.env.PUZZLE_INPUT.trim();
 
   const input = readFileSync(
     resolve(dirname(fileURLToPath(import.meta.url)), `../results/${year}/day-${day}/input.txt`),
