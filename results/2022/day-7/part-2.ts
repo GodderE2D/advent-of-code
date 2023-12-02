@@ -1,10 +1,9 @@
 // Heavily inspired from JPBM135's result:
 // https://github.com/JPBM135/advent-of-coding-2022/blob/main/day-07/index.ts
 
-import { readFileSync } from "fs";
+import { getInput } from "../../../src/get-input.ts";
 
-// If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
-const input = readFileSync("./input.txt", "utf-8");
+const input = getInput(2022, 7);
 
 const lines = input.split("\n");
 
@@ -39,7 +38,5 @@ const usedSize = dirSizes.get("/")!;
 const freeSize = totalSize - usedSize;
 const sizeNeeded = upgradeSize - freeSize;
 
-const deletionPossibilities = dirArr
-  .filter((size) => size[1] >= sizeNeeded)
-  .sort((a, b) => a[1] - b[1]);
+const deletionPossibilities = dirArr.filter((size) => size[1] >= sizeNeeded).sort((a, b) => a[1] - b[1]);
 console.log(deletionPossibilities[0][1]);

@@ -1,10 +1,10 @@
 // By LucasDower on GitHub. Slightly modified.
 // https://github.com/LucasDower/AOC-2022/blob/main/day-09/part-2/solution.ts
 
-import { readFileSync } from "fs";
+import { getInput } from "../../../src/get-input.ts";
 
-// If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
-const input = readFileSync("./input.txt", "utf-8");
+const input = getInput(2022, 9);
+
 const lines = input.split("\n");
 
 const _head = { x: 0, y: 0 };

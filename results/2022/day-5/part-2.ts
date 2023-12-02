@@ -1,14 +1,10 @@
-import { readFileSync } from "fs";
+import { getInput } from "../../../src/get-input.ts";
 
-// If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
-const input = readFileSync("./input.txt", "utf-8");
+const input = getInput(2022, 5);
 
-const transpose = (arr: (string | null)[][]) =>
-  arr[0].map((_, colIndex) => arr.map((row) => row[colIndex]));
+const transpose = (arr: (string | null)[][]) => arr[0].map((_, colIndex) => arr.map((row) => row[colIndex]));
 
-const [createStr, instructionsStr] = input.split(
-  "\n 1   2   3   4   5   6   7   8   9 \n\n"
-);
+const [createStr, instructionsStr] = input.split("\n 1   2   3   4   5   6   7   8   9 \n\n");
 
 let crates: (string | null)[][] = [];
 
@@ -17,9 +13,7 @@ for (const crate of cratePerLine) {
   const crateArr = crate.match(/(...[ \n])|(...$)/g);
   if (!crateArr) throw new Error("Did not match any letters in crates.");
 
-  const letters = crateArr.map((c) =>
-    c.startsWith(" ") ? null : c.slice(1, 2)
-  );
+  const letters = crateArr.map((c) => (c.startsWith(" ") ? null : c.slice(1, 2)));
   crates.push([]);
 
   for (const letter of letters) {
@@ -55,10 +49,4 @@ for (const { moveAmount, from, to } of instructions) {
   crates[to - 1] = [...crates[to - 1], ...movingLetters];
 }
 
-console.log(
-  crates
-    .map(
-      (letter) => letter.filter((l) => l)[letter.filter((l) => l).length - 1]
-    )
-    .join("")
-);
+console.log(crates.map((letter) => letter.filter((l) => l)[letter.filter((l) => l).length - 1]).join(""));

@@ -1,7 +1,6 @@
-import { readFileSync } from "fs";
+import { getInput } from "../../../src/get-input.ts";
 
-// If you did not clone the Git repo, replace the value with your AoC's input or copy and paste it from ./input.txt.
-const input = readFileSync("./input.txt", "utf-8");
+const input = getInput(2022, 9);
 
 type direction = "R" | "L" | "U" | "D";
 type pair = [number, number];
@@ -12,50 +11,14 @@ const zeroOrValue = (a: number) => a; // (a < 0 ? 0 : a);
 const isTouching = () => {
   const result = [
     equals(tailCoordinate, headCoordinate), // same
-    equals(
-      [zeroOrValue(tailCoordinate.at(0)! - 1), tailCoordinate.at(1)!],
-      headCoordinate
-    ), // left
-    equals(
-      [zeroOrValue(tailCoordinate.at(0)! + 1), tailCoordinate.at(1)!],
-      headCoordinate
-    ), // right
-    equals(
-      [tailCoordinate.at(0)!, zeroOrValue(tailCoordinate.at(1)! + 1)],
-      headCoordinate
-    ), // up
-    equals(
-      [tailCoordinate.at(0)!, zeroOrValue(tailCoordinate.at(1)! - 1)],
-      headCoordinate
-    ), // down
-    equals(
-      [
-        zeroOrValue(tailCoordinate.at(0)! - 1),
-        zeroOrValue(tailCoordinate.at(1)! + 1),
-      ],
-      headCoordinate
-    ), // left-up
-    equals(
-      [
-        zeroOrValue(tailCoordinate.at(0)! + 1),
-        zeroOrValue(tailCoordinate.at(1)! + 1),
-      ],
-      headCoordinate
-    ), // right-up
-    equals(
-      [
-        zeroOrValue(tailCoordinate.at(0)! - 1),
-        zeroOrValue(tailCoordinate.at(1)! - 1),
-      ],
-      headCoordinate
-    ), // left-down
-    equals(
-      [
-        zeroOrValue(tailCoordinate.at(0)! + 1),
-        zeroOrValue(tailCoordinate.at(1)! - 1),
-      ],
-      headCoordinate
-    ), // right-down
+    equals([zeroOrValue(tailCoordinate.at(0)! - 1), tailCoordinate.at(1)!], headCoordinate), // left
+    equals([zeroOrValue(tailCoordinate.at(0)! + 1), tailCoordinate.at(1)!], headCoordinate), // right
+    equals([tailCoordinate.at(0)!, zeroOrValue(tailCoordinate.at(1)! + 1)], headCoordinate), // up
+    equals([tailCoordinate.at(0)!, zeroOrValue(tailCoordinate.at(1)! - 1)], headCoordinate), // down
+    equals([zeroOrValue(tailCoordinate.at(0)! - 1), zeroOrValue(tailCoordinate.at(1)! + 1)], headCoordinate), // left-up
+    equals([zeroOrValue(tailCoordinate.at(0)! + 1), zeroOrValue(tailCoordinate.at(1)! + 1)], headCoordinate), // right-up
+    equals([zeroOrValue(tailCoordinate.at(0)! - 1), zeroOrValue(tailCoordinate.at(1)! - 1)], headCoordinate), // left-down
+    equals([zeroOrValue(tailCoordinate.at(0)! + 1), zeroOrValue(tailCoordinate.at(1)! - 1)], headCoordinate), // right-down
   ].some((isEquals) => isEquals === true);
   return result;
 };
@@ -77,44 +40,28 @@ for (const [direction, distance] of instructions) {
         headCoordinate = [headCoordinate.at(0)! + 1, headCoordinate.at(1)!];
         if (!isTouching()) {
           tailCoordinate = [tailCoordinate.at(0)! + 1, headCoordinate.at(1)!];
-          tailVisitedCoordinates.add(
-            `${tailCoordinate.at(0)},${tailCoordinate.at(
-              1
-            )}}` as `${number},${number}`
-          );
+          tailVisitedCoordinates.add(`${tailCoordinate.at(0)},${tailCoordinate.at(1)}}` as `${number},${number}`);
         }
         break;
       case "L":
         headCoordinate = [headCoordinate.at(0)! - 1, headCoordinate.at(1)!];
         if (!isTouching()) {
           tailCoordinate = [tailCoordinate.at(0)! - 1, headCoordinate.at(1)!];
-          tailVisitedCoordinates.add(
-            `${tailCoordinate.at(0)},${tailCoordinate.at(
-              1
-            )}}` as `${number},${number}`
-          );
+          tailVisitedCoordinates.add(`${tailCoordinate.at(0)},${tailCoordinate.at(1)}}` as `${number},${number}`);
         }
         break;
       case "U":
         headCoordinate = [headCoordinate.at(0)!, headCoordinate.at(1)! + 1];
         if (!isTouching()) {
           tailCoordinate = [headCoordinate.at(0)!, tailCoordinate.at(1)! + 1];
-          tailVisitedCoordinates.add(
-            `${tailCoordinate.at(0)},${tailCoordinate.at(
-              1
-            )}}` as `${number},${number}`
-          );
+          tailVisitedCoordinates.add(`${tailCoordinate.at(0)},${tailCoordinate.at(1)}}` as `${number},${number}`);
         }
         break;
       case "D":
         headCoordinate = [headCoordinate.at(0)!, headCoordinate.at(1)! - 1];
         if (!isTouching()) {
           tailCoordinate = [headCoordinate.at(0)!, tailCoordinate.at(1)! - 1];
-          tailVisitedCoordinates.add(
-            `${tailCoordinate.at(0)},${tailCoordinate.at(
-              1
-            )}}` as `${number},${number}`
-          );
+          tailVisitedCoordinates.add(`${tailCoordinate.at(0)},${tailCoordinate.at(1)}}` as `${number},${number}`);
         }
         break;
     }

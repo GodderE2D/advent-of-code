@@ -1,4 +1,6 @@
-const input = "...";
+import { getInput } from "../../../src/get-input.ts";
+
+const input = getInput(2023, 1);
 
 let sum = 0;
 
@@ -17,4 +19,4 @@ for (const line of input.split("\n")) {
   sum += parseInt(`${first}${second}`);
 }
 
-console.log("Sum:", sum);
+console.log(sum);
