@@ -59,6 +59,7 @@ know how to solve something in a specific language. Happy holidays!
 | ------ | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ⭐️⭐️ | 1   | [Summary](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-1/summary.md) · [Part 1 Code](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-1/part-1.ts) · [Part 2 Code](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-1/part-2.ts) · [AoC Page ↗︎](https://adventofcode.com/2023/day/1) |
 | ⭐️⭐️ | 2   | [Summary](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-2/summary.md) · [Part 1 Code](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-2/part-1.ts) · [Part 2 Code](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-2/part-2.ts) · [AoC Page ↗︎](https://adventofcode.com/2023/day/2) |
+| ⭐️⭐️ | 3   | [Summary](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-3/summary.md) · [Part 1 Code](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-3/part-1.ts) · [Part 2 Code](https://github.com/GodderE2D/advent-of-code/blob/main/results/2023/day-3/part-2.ts) · [AoC Page ↗︎](https://adventofcode.com/2023/day/3) |
 
 # License
 
